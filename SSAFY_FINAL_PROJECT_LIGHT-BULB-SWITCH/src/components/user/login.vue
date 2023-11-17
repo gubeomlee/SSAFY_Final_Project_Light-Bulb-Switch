@@ -36,12 +36,11 @@
               v-model="password"
             />
           </div>
-          <RouterLink
-            class="w-20 me-2 btn btn-outline-primary"
-            @click="login"
-            :to="{ name: 'home' }"
-            >로그인</RouterLink
-          >
+
+          <span class="w-20 me-2 btn btn-outline-primary" @click="login">
+            로그인
+          </span>
+
           <RouterLink class="w-20 btn btn-outline-danger" :to="{ name: 'home' }"
             >취소</RouterLink
           >
@@ -52,16 +51,22 @@
 </template>
 
 <script setup>
-import { RouterView, RouterLink } from "vue-router";
+import { RouterView, RouterLink, useRouter } from "vue-router";
 import { ref } from "vue";
 import { useUsersStore } from "@/stores/users";
-const store = useUsersStore();
 
+const store = useUsersStore();
 const userId = ref("");
 const password = ref("");
+const router = useRouter();
 
 const login = () => {
   store.loginFunc(userId.value, password.value);
+  if (store.loginUser !== null) {
+    router.push({ name: "home" });
+  } else {
+    alert("아이디 또는 비밀번호가 일치하지 않습니다.");
+  }
 };
 </script>
 
