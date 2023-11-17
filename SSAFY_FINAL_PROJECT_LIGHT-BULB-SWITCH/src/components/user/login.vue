@@ -34,6 +34,7 @@
               id="password"
               name="title"
               v-model="password"
+              @keyup.enter="login"
             />
           </div>
 

@@ -1,11 +1,11 @@
 <template>
   <div>
-    <signin></signin>
+    <Signin></Signin>
   </div>
 </template>
 
 <script setup>
-import signin from "../components/user/signin.vue";
+import Signin from "../components/User/Signin.vue";
 </script>
 
 <style scoped></style>

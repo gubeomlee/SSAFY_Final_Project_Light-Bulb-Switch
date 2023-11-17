@@ -1,11 +1,11 @@
 <template>
   <div>
-    <login></login>
+    <Login></Login>
   </div>
 </template>
 
 <script setup>
-import login from "../components/user/login.vue";
+import Login from "../components/User/Login.vue";
 </script>
 
 <style scoped></style>

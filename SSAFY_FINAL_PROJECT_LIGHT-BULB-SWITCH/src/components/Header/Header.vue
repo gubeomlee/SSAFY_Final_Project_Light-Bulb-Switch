@@ -12,7 +12,12 @@
               >
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link link-dark px-2">Features</a>
+              <router-link
+                class="nav-link link-dark px-2"
+                :to="{ name: 'search' }"
+              >
+                모임찾기
+              </router-link>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link link-dark px-2">Pricing</a>

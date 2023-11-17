@@ -1,11 +1,11 @@
 <template>
   <div>
-    <mypage></mypage>
+    <Mypage></Mypage>
   </div>
 </template>
 
 <script setup>
-import mypage from "../components/user/mypage.vue";
+import Mypage from "../components/User/Mypage.vue";
 </script>
 
 <style scoped></style>

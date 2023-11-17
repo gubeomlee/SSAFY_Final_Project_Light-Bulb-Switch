@@ -70,20 +70,26 @@
                 'btn btn-outline-dark': workout[1] % 2 === 0,
                 'btn btn-dark': workout[1] % 2 !== 0,
               }"
+              style="margin: 2px; padding: 2px"
             >
               {{ workout[0] }}
             </button>
           </div>
-
-          <RouterLink
-            class="w-20 me-2 btn btn-outline-primary"
-            @click="signin"
-            :to="{ name: 'login' }"
-            >회원가입</RouterLink
-          >
-          <RouterLink class="w-20 btn btn-outline-danger" :to="{ name: 'home' }"
-            >취소</RouterLink
-          >
+          <div style="margin-top: 4px">
+            <RouterLink
+              class="w-20 me-2 btn btn-outline-primary"
+              @click="signin"
+              :to="{ name: 'login' }"
+              style="padding: 2px"
+              >회원가입</RouterLink
+            >
+            <RouterLink
+              class="w-20 btn btn-outline-danger"
+              :to="{ name: 'home' }"
+              style="padding: 2px"
+              >취소</RouterLink
+            >
+          </div>
         </form>
       </div>
     </div>

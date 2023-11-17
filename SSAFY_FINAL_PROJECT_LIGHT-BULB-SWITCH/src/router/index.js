@@ -1,11 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
-// import login from "@/components/user/login.vue";
-// import signin from "@/components/user/signin.vue";
-// import mypage from "@/components/user/mypage.vue";
-import loginView from "@/views/loginView.vue";
-import signinView from "@/views/signinView.vue";
-import mypageView from "@/views/mypageView.vue";
-import homeView from "@/views/homeView.vue";
+import HomeView from "@/views/HomeView.vue";
+import SearchView from "@/views/SearchView.vue";
+import LoginView from "@/views/LoginView.vue";
+import SigninView from "@/views/SigninView.vue";
+import MypageView from "@/views/MypageView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -13,22 +11,27 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: homeView,
+      component: HomeView,
+    },
+    {
+      path: "/search",
+      name: "search",
+      component: SearchView,
     },
     {
       path: "/login",
       name: "login",
-      component: loginView,
+      component: LoginView,
     },
     {
       path: "/signin",
       name: "signin",
-      component: signinView,
+      component: SigninView,
     },
     {
       path: "/mypage",
       name: "mypage",
-      component: mypageView,
+      component: MypageView,
     },
   ],
 });

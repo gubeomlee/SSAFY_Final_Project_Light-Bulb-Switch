@@ -1,13 +1,13 @@
 <template>
   <div>
     <SearchBar></SearchBar>
-    <Home></Home>
+    <Search></Search>
   </div>
 </template>
 
 <script setup>
 import SearchBar from "../components/Header/SearchBar.vue";
-import Home from "../components/Main/Home.vue";
+import Search from "../components/Main/Search.vue";
 </script>
 
 <style scoped></style>
