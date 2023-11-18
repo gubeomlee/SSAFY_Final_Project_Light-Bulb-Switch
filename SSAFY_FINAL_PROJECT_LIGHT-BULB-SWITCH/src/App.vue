@@ -1,7 +1,9 @@
 <template>
   <div>
     <div>
-      <Header></Header>
+      <header>
+        <Header></Header>
+      </header>
       <body>
         <router-view></router-view>
       </body>
@@ -19,10 +21,7 @@ import Footer from "./components/Footer/Footer.vue";
 </script>
 
 <style scoped>
-footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 60px;
+body {
+  min-height: 100vh; /* 뷰포트의 최소 높이를 100%로 설정 */
 }
 </style>

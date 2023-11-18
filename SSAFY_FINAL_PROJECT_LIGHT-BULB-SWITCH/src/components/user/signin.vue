@@ -2,12 +2,7 @@
   <div>
     <div class="container">
       <div class="shadow pt-5 pb-5 m-5 bg-light rounded" style="width: 80%">
-        <form
-          class="signinform"
-          method="post"
-          action="main"
-          style="width: 80%; margin: auto"
-        >
+        <form class="signinform" method="post" action="main" style="width: 80%; margin: auto">
           <div class="text-center">
             <h2 class="d-inline mb-3 fs-4 fw-semibold">회원가입</h2>
           </div>
@@ -15,30 +10,15 @@
 
           <div class="mb-3">
             <label for="userId" class="col-form-label">아이디</label>
-            <input
-              type="text"
-              class="form-control"
-              id="userId"
-              v-model="userId"
-            />
+            <input type="text" class="form-control" id="userId" v-model="userId" />
           </div>
           <div class="mb-3">
             <label for="password" class="col-form-label">비밀번호</label>
-            <input
-              type="password"
-              class="form-control"
-              id="password"
-              v-model="password"
-            />
+            <input type="password" class="form-control" id="password" v-model="password" />
           </div>
           <div class="mb-3">
             <label for="username" class="col-form-label">이름</label>
-            <input
-              type="text"
-              class="form-control"
-              id="username"
-              v-model="username"
-            />
+            <input type="text" class="form-control" id="username" v-model="username" />
           </div>
           <div class="mb-3">
             <label for="location" class="col-form-label">지역</label>
@@ -76,19 +56,8 @@
             </button>
           </div>
           <div style="margin-top: 4px">
-            <RouterLink
-              class="w-20 me-2 btn btn-outline-primary"
-              @click="signin"
-              :to="{ name: 'login' }"
-              style="padding: 2px"
-              >회원가입</RouterLink
-            >
-            <RouterLink
-              class="w-20 btn btn-outline-danger"
-              :to="{ name: 'home' }"
-              style="padding: 2px"
-              >취소</RouterLink
-            >
+            <RouterLink class="w-20 me-2 btn btn-outline-primary" @click="signin" :to="{ name: 'login' }" style="padding: 2px">회원가입</RouterLink>
+            <RouterLink class="w-20 btn btn-outline-danger" :to="{ name: 'home' }" style="padding: 2px">취소</RouterLink>
           </div>
         </form>
       </div>
@@ -112,8 +81,8 @@ const workoutList = ref([]);
 for (let i = 0; i < store.workout.length; i++) {
   workoutList.value.push([store.workout[i], false]);
 }
-const signinWorkout = ref([]);
 
+const signinWorkout = ref([]);
 const signin = () => {
   for (let i = 0; i < workoutList.value.length; i++) {
     if (workoutList.value[i][1] === true) {
@@ -121,15 +90,7 @@ const signin = () => {
     }
   }
 
-  store.signinFunc(
-    userId.value,
-    password.value,
-    username.value,
-    location.value,
-    age.value,
-    gender.value,
-    signinWorkout.value
-  );
+  store.signinFunc(userId.value, password.value, username.value, location.value, age.value, gender.value, signinWorkout.value);
 };
 </script>
 
