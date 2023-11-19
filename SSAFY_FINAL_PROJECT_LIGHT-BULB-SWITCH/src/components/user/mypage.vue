@@ -46,6 +46,10 @@
       </div>
       <div class="shadow rounded m-2 p-2" style="background-color: aqua; width: 60%">
         <div>모임일정 달력</div>
+        <div class="schedule" style="background-color: bisque; width: 50%;">
+        <div>달력</div>
+        <scheduleVue/>
+        </div>
       </div>
     </div>
   </div>
@@ -54,6 +58,7 @@
 <script setup>
 import { ref } from "vue";
 import { useUsersStore } from "../../stores/users";
+import scheduleVue from "@/components/user/schedule.vue";
 const store = useUsersStore();
 
 const workoutList = ref([]);
