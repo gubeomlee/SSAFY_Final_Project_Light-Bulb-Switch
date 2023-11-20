@@ -1,13 +1,13 @@
 <template>
   <div>
     <SearchBar></SearchBar>
-    <Search></Search>
+    <GroupSearch></GroupSearch>
   </div>
 </template>
 
 <script setup>
 import SearchBar from "../components/Header/SearchBar.vue";
-import Search from "../components/Main/Search.vue";
+import GroupSearch from "../components/Group/GroupSearch.vue";
 </script>
 
 <style scoped></style>

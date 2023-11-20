@@ -15,6 +15,15 @@ export const useUsersStore = defineStore("users", () => {
       gender: "M",
       workoutList: ["자전거", "배드민턴"],
     },
+    {
+      userId: "qwer",
+      password: "1234",
+      username: "이백준",
+      location: "부산",
+      age: 30,
+      gender: "F",
+      workoutList: ["볼링", "골프"],
+    },
   ]);
 
   const workout = ref([

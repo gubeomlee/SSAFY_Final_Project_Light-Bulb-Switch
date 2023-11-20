@@ -42,6 +42,7 @@
             </select>
           </div>
           <div>
+            <div>관심사항</div>
             <button
               v-for="(workout, index) in workoutList"
               @click="store.selectWorkout(workoutList, index)"
@@ -82,15 +83,15 @@ for (let i = 0; i < store.workout.length; i++) {
   workoutList.value.push([store.workout[i], false]);
 }
 
-const signupWorkout = ref([]);
+const workoutListSignup = ref([]);
 const signup = () => {
   for (let i = 0; i < workoutList.value.length; i++) {
     if (workoutList.value[i][1] === true) {
-      signupWorkout.value.push(workoutList.value[i][0]);
+      workoutListSignup.value.push(workoutList.value[i][0]);
     }
   }
 
-  store.signupFunc(userId.value, password.value, username.value, location.value, age.value, gender.value, signupWorkout.value);
+  store.signupFunc(userId.value, password.value, username.value, location.value, age.value, gender.value, workoutListSignup.value);
 };
 </script>
 

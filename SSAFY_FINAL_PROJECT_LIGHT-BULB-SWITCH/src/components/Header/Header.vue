@@ -11,7 +11,7 @@
               <router-link class="nav-link link-dark px-2" :to="{ name: 'groupCreate' }"> 모임만들기 </router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link link-dark px-2" :to="{ name: 'search' }"> 모임찾기 </router-link>
+              <router-link class="nav-link link-dark px-2" :to="{ name: 'groupSearch' }"> 모임찾기 </router-link>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link link-dark px-2">Pricing</a>
