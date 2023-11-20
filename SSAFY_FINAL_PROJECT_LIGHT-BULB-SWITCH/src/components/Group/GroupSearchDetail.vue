@@ -1,8 +1,14 @@
 <template>
   <div>
-    <div>여기는 모임 상세 정보입니다.</div>
-    <div>
-      {{ group }}
+    <div class="container d-flex flex-row" style="width: 70%">
+      <div class="shadow rounded m-2 p-2 bg-light" style="width: 20%">
+        <i class="bi bi-bookmarks" style="font-size: 100%"></i>
+      </div>
+      <div class="shadow rounded m-2 p-2 bg-light" style="max-width: 80%; min-width: 80%">
+        <div>{{ group.groupTitle }}</div>
+        <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{ group.groupContent }}</div>
+        <div>{{ group.groupLocation }} | 멤버: {{ group.groupMember.length }} / {{ group.groupCapacity }}</div>
+      </div>
     </div>
   </div>
 </template>

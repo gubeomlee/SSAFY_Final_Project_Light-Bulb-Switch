@@ -29,7 +29,8 @@
           </div>
           <div class="mb-3">
             <label for="groupContent" class="col-form-label">모임목표</label>
-            <input type="text" class="form-control" id="groupContent" v-model="groupContent" />
+            <textarea class="form-control" rows="10" id="groupContent" v-model="groupContent"></textarea>
+            {{ groupContent }}
           </div>
           <div>
             <div>관심사항</div>
@@ -65,12 +66,13 @@ const store = useGroupStore();
 const userStore = useUsersStore();
 
 const representative = ref(userStore.loginUser.username);
-const representativeId = ref(userStore.loginUser.userId);
+const representativeId = ref(userStore.loginUser.id);
 const groupTitle = ref("");
 const groupLocation = ref("");
 const groupCapacity = ref(30);
 const groupContent = ref("");
 const workoutList = ref([]);
+const groupMember = ref([{ username: userStore.username, id: userStore.id }]);
 for (let i = 0; i < store.workout.length; i++) {
   workoutList.value.push([store.workout[i], false]);
 }
@@ -83,7 +85,7 @@ const createGroup = () => {
     }
   }
 
-  store.createGroup(representative, representativeId, groupTitle, groupLocation, groupCapacity, groupContent, workoutListCreateGroup);
+  store.createGroup(representative, representativeId, groupTitle, groupLocation, groupCapacity, groupContent, workoutListCreateGroup, groupMember);
 };
 </script>
 

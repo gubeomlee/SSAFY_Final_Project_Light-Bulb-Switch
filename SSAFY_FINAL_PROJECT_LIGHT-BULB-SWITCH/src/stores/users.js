@@ -7,6 +7,7 @@ export const useUsersStore = defineStore("users", () => {
 
   const userInfoList = ref([
     {
+      id: 1,
       userId: "ssafy",
       password: "1234",
       username: "김싸피",
@@ -16,6 +17,7 @@ export const useUsersStore = defineStore("users", () => {
       workoutList: ["자전거", "배드민턴"],
     },
     {
+      id: 2,
       userId: "qwer",
       password: "1234",
       username: "이백준",
@@ -59,7 +61,9 @@ export const useUsersStore = defineStore("users", () => {
   const locationList = ref(["서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종", "경기", "충북", "충남", "전북", "전남", "경북", "경남", "강원", "제주"]);
 
   const signupFunc = (userId, password, username, location, age, gender, workoutList) => {
+    const id = userInfoList.length;
     userInfoList.value.push({
+      id,
       userId,
       password,
       username,
