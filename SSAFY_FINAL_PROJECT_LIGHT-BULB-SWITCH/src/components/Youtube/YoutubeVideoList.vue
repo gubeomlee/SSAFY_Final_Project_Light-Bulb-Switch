@@ -2,7 +2,11 @@
   <div>
     <div>영상 리스트</div>
     <div>
-      <YoutubeVideoListItem v-for="video in store.videos" :key="video.id.videoId" :video="video"></YoutubeVideoListItem>
+      <YoutubeVideoListItem
+        v-for="video in store.videos"
+        :key="video.id.videoId"
+        :video="video"
+      ></YoutubeVideoListItem>
     </div>
   </div>
 </template>

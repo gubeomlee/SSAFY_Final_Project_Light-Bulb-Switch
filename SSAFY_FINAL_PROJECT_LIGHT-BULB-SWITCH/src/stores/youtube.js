@@ -4,11 +4,35 @@ import axios from "axios";
 
 export const useYoutubeStore = defineStore("youtube", () => {
   const videos = ref([]);
-  const selectedVideo = ref(null);
+  const videoRandom = ref(null);
+  const videoSelect = ref(null);
 
-  const youtubeSearch = function (keyword) {
+  const youtubeSearchRandom = () => {
+    const randomIndex = Math.floor(Math.random() * 2);
+    console.log(randomIndex);
     const URL = "https://www.googleapis.com/youtube/v3/search";
-    const API_KEY = "AIzaSyAv1k6tkW3tgPkanDWydzf9k0rtMQixdwY";
+    const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
+    axios({
+      url: URL,
+      method: "GET",
+      params: {
+        key: API_KEY,
+        part: "snippet",
+        q: "운동",
+        type: "video",
+        maxResults: 2,
+      },
+    })
+      .then((response) => {
+        videoRandom.value = response.data.items[randomIndex].snippet;
+        console.log(videoRandom.value);
+      })
+      .catch(() => {});
+  };
+
+  const youtubeSearchSelect = (keyword) => {
+    const URL = "https://www.googleapis.com/youtube/v3/search";
+    const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
     axios({
       url: URL,
       method: "GET",
@@ -17,7 +41,7 @@ export const useYoutubeStore = defineStore("youtube", () => {
         part: "snippet",
         q: keyword,
         type: "video",
-        maxResults: 10,
+        maxResults: 5,
       },
     })
       .then((response) => {
@@ -30,7 +54,15 @@ export const useYoutubeStore = defineStore("youtube", () => {
   };
 
   const clickVideo = function (video) {
-    selectedVideo.value = video;
+    videoSelect.value = video;
+    console.log(videoSelect);
   };
-  return { videos, youtubeSearch, clickVideo, selectedVideo };
+  return {
+    videos,
+    youtubeSearchRandom,
+    youtubeSearchSelect,
+    clickVideo,
+    videoSelect,
+    videoRandom,
+  };
 });

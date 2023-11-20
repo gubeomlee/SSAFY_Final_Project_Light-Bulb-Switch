@@ -14,6 +14,14 @@
             <li class="nav-item">
               <router-link
                 class="nav-link link-dark px-2"
+                :to="{ name: 'groupCreate' }"
+              >
+                모임만들기
+              </router-link>
+            </li>
+            <li class="nav-item">
+              <router-link
+                class="nav-link link-dark px-2"
                 :to="{ name: 'search' }"
               >
                 모임찾기

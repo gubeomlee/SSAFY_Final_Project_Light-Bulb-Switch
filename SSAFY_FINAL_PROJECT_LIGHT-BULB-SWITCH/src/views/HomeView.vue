@@ -2,20 +2,17 @@
   <div>
     <!-- <SearchBar></SearchBar> -->
     <YoutubeVideoSearch></YoutubeVideoSearch>
-    <Home></Home>
-    <YoutubeVideoList></YoutubeVideoList>
-    <YoutubeVideoListItem></YoutubeVideoListItem>
-    <YoutubeVideoDetail></YoutubeVideoDetail>
+    <div>
+      <YoutubeVideoDetailRandom></YoutubeVideoDetailRandom>
+      <Home></Home>
+    </div>
   </div>
 </template>
 
 <script setup>
-import SearchBar from "../components/Header/SearchBar.vue";
 import Home from "../components/Main/Home.vue";
-import YoutubeVideoDetail from "../components/Youtube/YoutubeVideoDetail.vue";
-import YoutubeVideoListItem from "../components/Youtube/YoutubeVideoListItem.vue";
-import YoutubeVideoList from "../components/Youtube/YoutubeVideoList.vue";
 import YoutubeVideoSearch from "../components/Youtube/YoutubeVideoSearch.vue";
+import YoutubeVideoDetailRandom from "../components/Youtube/YoutubeVideoDetailRandom.vue";
 </script>
 
 <style scoped></style>

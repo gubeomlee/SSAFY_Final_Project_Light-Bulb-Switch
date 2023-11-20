@@ -4,6 +4,7 @@ import SearchView from "@/views/SearchView.vue";
 import LoginView from "@/views/LoginView.vue";
 import SigninView from "@/views/SigninView.vue";
 import MypageView from "@/views/MypageView.vue";
+import GroupCreateView from "@/views/GroupCreateView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,6 +13,11 @@ const router = createRouter({
       path: "/",
       name: "home",
       component: HomeView,
+    },
+    {
+      path: "/groupCreate",
+      name: "groupCreate",
+      component: GroupCreateView,
     },
     {
       path: "/search",
