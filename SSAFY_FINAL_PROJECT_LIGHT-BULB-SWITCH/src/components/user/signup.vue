@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <div class="shadow pt-5 pb-5 m-5 bg-light rounded" style="width: 80%">
-        <form class="signinform" method="post" action="main" style="width: 80%; margin: auto">
+        <form class="signupform" method="post" action="main" style="width: 80%; margin: auto">
           <div class="text-center">
             <h2 class="d-inline mb-3 fs-4 fw-semibold">회원가입</h2>
           </div>
@@ -56,7 +56,7 @@
             </button>
           </div>
           <div style="margin-top: 4px">
-            <RouterLink class="w-20 me-2 btn btn-outline-primary" @click="signin" :to="{ name: 'login' }" style="padding: 2px">회원가입</RouterLink>
+            <RouterLink class="w-20 me-2 btn btn-outline-primary" @click="signup" :to="{ name: 'login' }" style="padding: 2px">회원가입</RouterLink>
             <RouterLink class="w-20 btn btn-outline-danger" :to="{ name: 'home' }" style="padding: 2px">취소</RouterLink>
           </div>
         </form>
@@ -82,15 +82,15 @@ for (let i = 0; i < store.workout.length; i++) {
   workoutList.value.push([store.workout[i], false]);
 }
 
-const signinWorkout = ref([]);
-const signin = () => {
+const signupWorkout = ref([]);
+const signup = () => {
   for (let i = 0; i < workoutList.value.length; i++) {
     if (workoutList.value[i][1] === true) {
-      signinWorkout.value.push(workoutList.value[i][0]);
+      signupWorkout.value.push(workoutList.value[i][0]);
     }
   }
 
-  store.signinFunc(userId.value, password.value, username.value, location.value, age.value, gender.value, signinWorkout.value);
+  store.signupFunc(userId.value, password.value, username.value, location.value, age.value, gender.value, signupWorkout.value);
 };
 </script>
 

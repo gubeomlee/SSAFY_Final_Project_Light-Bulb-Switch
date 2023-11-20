@@ -47,35 +47,9 @@ export const useUsersStore = defineStore("users", () => {
     "족구",
   ]);
 
-  const locationList = ref([
-    "서울",
-    "부산",
-    "대구",
-    "인천",
-    "광주",
-    "대전",
-    "울산",
-    "세종",
-    "경기",
-    "충북",
-    "충남",
-    "전북",
-    "전남",
-    "경북",
-    "경남",
-    "강원",
-    "제주",
-  ]);
+  const locationList = ref(["서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종", "경기", "충북", "충남", "전북", "전남", "경북", "경남", "강원", "제주"]);
 
-  const signinFunc = (
-    userId,
-    password,
-    username,
-    location,
-    age,
-    gender,
-    workoutList
-  ) => {
+  const signupFunc = (userId, password, username, location, age, gender, workoutList) => {
     userInfoList.value.push({
       userId,
       password,
@@ -128,7 +102,7 @@ export const useUsersStore = defineStore("users", () => {
     loginUser,
     workout,
     locationList,
-    signinFunc,
+    signupFunc,
     loginFunc,
     logoutFunc,
     selectWorkout,
