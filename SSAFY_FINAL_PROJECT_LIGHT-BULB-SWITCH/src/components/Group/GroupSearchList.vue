@@ -1,7 +1,10 @@
 <template>
   <div>
     <router-link
-      :to="{ name: 'groupDetailView', params: { title: group.groupTitle } }"
+      :to="{
+        name: 'groupDetailView',
+        params: { title: group.groupTitle },
+      }"
     >
       <div class="container d-flex flex-row" style="width: 70%">
         <div class="shadow rounded m-2 p-2 bg-light" style="width: 20%">
@@ -32,6 +35,7 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
 import { RouterLink } from "vue-router";
 const props = defineProps({
   group: Object,

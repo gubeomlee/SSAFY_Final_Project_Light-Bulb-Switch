@@ -5,38 +5,60 @@
         <div class="container d-flex flex-wrap">
           <ul class="nav me-auto">
             <li class="nav-item">
-              <router-link class="nav-link link-dark px-2 active" :to="{ name: 'home' }">Home</router-link>
+              <router-link
+                class="nav-link link-dark px-2 active"
+                :to="{ name: 'home' }"
+                >Home</router-link
+              >
             </li>
             <li class="nav-item">
-              <router-link class="nav-link link-dark px-2" :to="{ name: 'groupCreate' }"> 모임만들기 </router-link>
+              <router-link
+                class="nav-link link-dark px-2"
+                :to="{ name: 'groupCreate' }"
+              >
+                모임만들기
+              </router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link link-dark px-2" :to="{ name: 'groupSearch' }"> 모임찾기 </router-link>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link link-dark px-2">Pricing</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link link-dark px-2">FAQs</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link link-dark px-2">About</a>
+              <router-link
+                class="nav-link link-dark px-2"
+                :to="{ name: 'groupSearch' }"
+              >
+                모임찾기
+              </router-link>
             </li>
           </ul>
           <ul v-if="!store.loginStatus" class="nav">
             <li class="nav-item">
-              <router-link class="nav-link link-dark px-2" :to="{ name: 'login' }">Login</router-link>
+              <router-link
+                class="nav-link link-dark px-2"
+                :to="{ name: 'login' }"
+                >Login</router-link
+              >
             </li>
             <li class="nav-item">
-              <router-link class="nav-link link-dark px-2" :to="{ name: 'signup' }">Sign up</router-link>
+              <router-link
+                class="nav-link link-dark px-2"
+                :to="{ name: 'signup' }"
+                >Sign up</router-link
+              >
             </li>
           </ul>
           <ul v-else class="nav">
             <li class="nav-item">
-              <router-link class="nav-link link-dark px-2" :to="{ name: 'home' }" @click="logout">Logout</router-link>
+              <router-link
+                class="nav-link link-dark px-2"
+                :to="{ name: 'home' }"
+                @click="logout"
+                >Logout</router-link
+              >
             </li>
             <li class="nav-item">
-              <router-link class="nav-link link-dark px-2" :to="{ name: 'mypage' }">MyPage</router-link>
+              <router-link
+                class="nav-link link-dark px-2"
+                :to="{ name: 'mypage' }"
+                >MyPage</router-link
+              >
             </li>
           </ul>
         </div>

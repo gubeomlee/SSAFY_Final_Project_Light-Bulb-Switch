@@ -35,13 +35,15 @@
           </div>
           <div class="mb-3">
             <label for="groupCapacity" class="col-form-label"
-              >정원(30명 ~ 300명)</label
+              >정원({{ groupCapacityMin }}명 ~ {{ groupCapacityMax }}명)</label
             >
             <input
               type="number"
               class="form-control"
               id="groupCapacity"
               v-model="groupCapacity"
+              :min="groupCapacityMin"
+              :max="groupCapacityMax"
             />
           </div>
           <div class="mb-3">
@@ -103,9 +105,12 @@ const representativeId = ref(userStore.loginUser.id);
 const groupTitle = ref("");
 const groupLocation = ref("");
 const groupCapacity = ref(30);
+const groupCapacityMin = ref(5);
+const groupCapacityMax = ref(50);
 const groupContent = ref("");
 const workoutList = ref([]);
 const groupMember = ref([{ username: userStore.username, id: userStore.id }]);
+
 for (let i = 0; i < store.workout.length; i++) {
   workoutList.value.push([store.workout[i], false]);
 }
@@ -117,13 +122,15 @@ const createGroup = () => {
       workoutListCreateGroup.value.push(workoutList.value[i][0]);
     }
   }
-  if (groupCapacity.value < 30) {
-    alert("그룹 최소인원은 30명입니다.");
-    groupCapacity.value = 30;
-  } else if (groupCapacity.value > 300) {
-    alert("그룹 최대인원은 300명입니다.");
-    groupCapacity.value = 300;
+
+  if (groupCapacity.value < groupCapacityMin.value) {
+    alert(`그룹 최소인원은 ${groupCapacityMin.value}명입니다.`);
+    groupCapacity.value = groupCapacityMin.value;
+  } else if (groupCapacity.value > groupCapacityMax.value) {
+    alert(`그룹 최대인원은 ${groupCapacityMax.value}명입니다.`);
+    groupCapacity.value = groupCapacityMax.value;
   }
+
   store.createGroup(
     representative,
     representativeId,

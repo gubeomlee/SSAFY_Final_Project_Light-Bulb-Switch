@@ -8,7 +8,7 @@ export const useGroupStore = defineStore("group", () => {
       representativeId: 1,
       groupTitle: "모두가 즐거운 자전거모임",
       groupLocation: "서울",
-      groupCapacity: 200,
+      groupCapacity: 20,
       groupContent: "모두가 즐겁게 라이딩하고, 건강해지자!!!",
       workout: ["자전거"],
       groupMember: [{ username: "김싸피", id: 1 }],
@@ -18,7 +18,7 @@ export const useGroupStore = defineStore("group", () => {
       representativeId: 2,
       groupTitle: "볼링 골프 좋아하는 사람 모여라",
       groupLocation: "부산",
-      groupCapacity: 150,
+      groupCapacity: 30,
       groupContent:
         "다음 대회에서는 우리가 우승 다음 대회에서는 우리가 우승 다음 대회에서는 우리가 우승 다음 대회에서는 우리가 우승 다음 대회에서는 우리가 우승 다음 대회에서는 우리가 우승 다음 대회에서는 우리가 우승 다음 대회에서는 우리가 우승 다음 대회에서는 우리가 우승 다음 대회에서는 우리가 우승 다음 대회에서는 우리가 우승",
       workout: ["볼링"],
@@ -56,9 +56,36 @@ export const useGroupStore = defineStore("group", () => {
     "족구",
   ]);
 
-  const locationList = ref(["서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종", "경기", "충북", "충남", "전북", "전남", "경북", "경남", "강원", "제주"]);
+  const locationList = ref([
+    "서울",
+    "부산",
+    "대구",
+    "인천",
+    "광주",
+    "대전",
+    "울산",
+    "세종",
+    "경기",
+    "충북",
+    "충남",
+    "전북",
+    "전남",
+    "경북",
+    "경남",
+    "강원",
+    "제주",
+  ]);
 
-  const createGroup = (representative, representativeId, groupTitle, groupLocation, groupCapacity, groupContent, workout, groupMember) => {
+  const createGroup = (
+    representative,
+    representativeId,
+    groupTitle,
+    groupLocation,
+    groupCapacity,
+    groupContent,
+    workout,
+    groupMember
+  ) => {
     groupList.value.push({
       representative,
       representativeId,
