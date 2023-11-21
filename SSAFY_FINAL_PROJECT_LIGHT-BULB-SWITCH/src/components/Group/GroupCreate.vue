@@ -2,7 +2,12 @@
   <div>
     <div class="container">
       <div class="shadow pt-5 pb-5 m-5 bg-light rounded" style="width: 80%">
-        <form class="signupform" method="post" action="main" style="width: 80%; margin: auto">
+        <form
+          class="signupform"
+          method="post"
+          action="main"
+          style="width: 80%; margin: auto"
+        >
           <div class="text-center">
             <h2 class="d-inline mb-3 fs-4 fw-semibold">모임 만들기</h2>
           </div>
@@ -12,7 +17,12 @@
           </div>
           <div class="mb-3">
             <label for="groupTitle" class="col-form-label">모임이름</label>
-            <input type="text" class="form-control" id="groupTitle" v-model="groupTitle" />
+            <input
+              type="text"
+              class="form-control"
+              id="groupTitle"
+              v-model="groupTitle"
+            />
           </div>
           <div class="mb-3">
             <label for="groupLocation" class="col-form-label">모임장소</label>
@@ -24,12 +34,24 @@
             </select>
           </div>
           <div class="mb-3">
-            <label for="groupCapacity" class="col-form-label">정원(30명 ~ 300명)</label>
-            <input type="number" class="form-control" id="groupCapacity" v-model="groupCapacity" />
+            <label for="groupCapacity" class="col-form-label"
+              >정원(30명 ~ 300명)</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              id="groupCapacity"
+              v-model="groupCapacity"
+            />
           </div>
           <div class="mb-3">
             <label for="groupContent" class="col-form-label">모임목표</label>
-            <textarea class="form-control" rows="10" id="groupContent" v-model="groupContent"></textarea>
+            <textarea
+              class="form-control"
+              rows="10"
+              id="groupContent"
+              v-model="groupContent"
+            ></textarea>
             {{ groupContent }}
           </div>
           <div>
@@ -48,8 +70,19 @@
             </button>
           </div>
           <div style="margin-top: 4px">
-            <RouterLink class="w-20 me-2 btn btn-outline-primary" @click="createGroup" :to="{ name: 'groupSearch' }" style="padding: 2px">모임생성</RouterLink>
-            <RouterLink class="w-20 btn btn-outline-danger" :to="{ name: 'home' }" style="padding: 2px">취소</RouterLink>
+            <RouterLink
+              class="w-20 me-2 btn btn-outline-primary"
+              @click="createGroup"
+              :to="{ name: 'groupSearch' }"
+              style="padding: 2px"
+              >모임생성</RouterLink
+            >
+            <RouterLink
+              class="w-20 btn btn-outline-danger"
+              :to="{ name: 'home' }"
+              style="padding: 2px"
+              >취소</RouterLink
+            >
           </div>
         </form>
       </div>
@@ -84,8 +117,23 @@ const createGroup = () => {
       workoutListCreateGroup.value.push(workoutList.value[i][0]);
     }
   }
-
-  store.createGroup(representative, representativeId, groupTitle, groupLocation, groupCapacity, groupContent, workoutListCreateGroup, groupMember);
+  if (groupCapacity.value < 30) {
+    alert("그룹 최소인원은 30명입니다.");
+    groupCapacity.value = 30;
+  } else if (groupCapacity.value > 300) {
+    alert("그룹 최대인원은 300명입니다.");
+    groupCapacity.value = 300;
+  }
+  store.createGroup(
+    representative,
+    representativeId,
+    groupTitle,
+    groupLocation,
+    groupCapacity,
+    groupContent,
+    workoutListCreateGroup,
+    groupMember
+  );
 };
 </script>
 

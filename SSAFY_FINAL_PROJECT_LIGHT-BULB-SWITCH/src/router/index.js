@@ -1,10 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "@/views/HomeView.vue";
+import { useUsersStore } from "@/stores/users";
+import GroupCreateView from "@/views/GroupCreateView.vue";
 import GroupSearchView from "@/views/GroupSearchView.vue";
+import GroupDetailView from "@/views/GroupDetailView.vue";
+import HomeView from "@/views/HomeView.vue";
 import LoginView from "@/views/LoginView.vue";
 import SignupView from "@/views/SignupView.vue";
 import MypageView from "@/views/MypageView.vue";
-import GroupCreateView from "@/views/GroupCreateView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -25,6 +27,11 @@ const router = createRouter({
       component: GroupSearchView,
     },
     {
+      path: "/groupDetailView",
+      name: "groupDetailView",
+      component: GroupDetailView,
+    },
+    {
       path: "/login",
       name: "login",
       component: LoginView,
@@ -40,6 +47,18 @@ const router = createRouter({
       component: MypageView,
     },
   ],
+});
+
+router.beforeEach((to, from, next) => {
+  const usersStore = useUsersStore(); // users store 인스턴스 생성
+
+  // users store의 상태 및 함수 사용 예시
+  if (to.name === "groupCreate" && !usersStore.loginStatus) {
+    alert("로그인이 필요합니다.");
+    next({ name: "login" });
+  } else {
+    next();
+  }
 });
 
 export default router;
