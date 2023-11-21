@@ -1,7 +1,10 @@
 <template>
   <div>
     <div>여기는 모임검색 페이지입니다.</div>
-    <GroupSearchDetail v-for="group in store.groupList" :group="group"></GroupSearchDetail>
+    <GroupSearchDetail
+      v-for="group in store.groupList"
+      :group="group"
+    ></GroupSearchDetail>
   </div>
 </template>
 

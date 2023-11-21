@@ -27,7 +27,7 @@ const router = createRouter({
       component: GroupSearchView,
     },
     {
-      path: "/groupDetailView",
+      path: "/groupDetailView/:title",
       name: "groupDetailView",
       component: GroupDetailView,
     },
