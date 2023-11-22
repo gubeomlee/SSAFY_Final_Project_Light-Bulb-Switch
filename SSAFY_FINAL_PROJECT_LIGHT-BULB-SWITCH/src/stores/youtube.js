@@ -8,11 +8,11 @@ export const useYoutubeStore = defineStore("youtube", () => {
   const videoSelect = ref(null);
 
   const youtubeSearchRandom = () => {
-    const randomIndex = Math.floor(Math.random() * 2);
+    const randomIndex = Math.floor(Math.random() * 10);
     console.log(randomIndex);
     const URL = "https://www.googleapis.com/youtube/v3/search";
     const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
-    axios({
+    return axios({
       url: URL,
       method: "GET",
       params: {
@@ -20,12 +20,12 @@ export const useYoutubeStore = defineStore("youtube", () => {
         part: "snippet",
         q: "운동",
         type: "video",
-        maxResults: 2,
+        maxResults: 10,
       },
     })
       .then((response) => {
         videoRandom.value = response.data.items[randomIndex].snippet;
-        console.log(videoRandom.value);
+        // console.log(videoRandom.value);
       })
       .catch(() => {});
   };

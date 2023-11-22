@@ -3,8 +3,8 @@
     <!-- <SearchBar></SearchBar> -->
     <YoutubeVideoSearch></YoutubeVideoSearch>
     <div>
-      <YoutubeVideoDetailRandom></YoutubeVideoDetailRandom>
       <Home></Home>
+      <YoutubeVideoDetailRandom></YoutubeVideoDetailRandom>
     </div>
   </div>
 </template>
