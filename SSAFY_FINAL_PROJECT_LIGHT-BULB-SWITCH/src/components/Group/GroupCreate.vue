@@ -65,7 +65,6 @@
               id="groupContent"
               v-model="groupContent"
             ></textarea>
-            {{ groupContent }}
           </div>
           <div>
             <div>관심사항</div>

@@ -1,9 +1,8 @@
 <template>
   <div>
-    <div>모임 상세 정보 조회 페이지입니다.</div>
-    <div>
+    <!-- <div>
       {{ group }}
-    </div>
+    </div> -->
     <div>
       <div class="container">
         <div class="shadow pt-5 pb-5 m-5 bg-light rounded" style="width: 80%">
@@ -20,16 +19,24 @@
             </div>
             <div>{{ group.groupContent }}</div>
             <div>
-              <button type="button" class="btn btn-dark m-1" @click="joinGroup">
-                가입
-              </button>
-              <button
-                type="button"
-                class="btn btn-dark m-1"
-                @click="leaveGroup"
-              >
-                탈퇴
-              </button>
+              <div v-if="!groupStore.joinStatus">
+                <button
+                  type="button"
+                  class="btn btn-dark m-1"
+                  @click="joinGroup"
+                >
+                  가입
+                </button>
+              </div>
+              <div v-else>
+                <button
+                  type="button"
+                  class="btn btn-dark m-1"
+                  @click="leaveGroup"
+                >
+                  탈퇴
+                </button>
+              </div>
             </div>
             <hr class="mb-3" />
             <div>
@@ -50,7 +57,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useGroupStore } from "../../stores/group";
 import { useUsersStore } from "../../stores/users";
 import GroupMember from "./GroupMember.vue";
@@ -71,10 +78,14 @@ const joinGroup = () => {
     userStore.loginUser.id,
     userStore.loginUser.username
   );
+  groupStore.joinStatusFunc(props.group.id, userStore.loginUser.id);
+  console.log(groupStore.joinStatus);
 };
 
 const leaveGroup = () => {
   groupStore.leaveGroup(props.group.id, userStore.loginUser.id);
+  groupStore.joinStatusFunc(props.group.id, userStore.loginUser.id);
+  console.log(groupStore.joinStatus);
 };
 
 groupStore.joinStatusFunc(props.group.id, userStore.loginUser.id);

@@ -1,4 +1,4 @@
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { defineStore } from "pinia";
 
 export const useGroupStore = defineStore("group", () => {
@@ -142,16 +142,17 @@ export const useGroupStore = defineStore("group", () => {
     }
   };
 
-  const joinStatus = ref(null);
+  const joinStatus = ref(false);
 
   const joinStatusFunc = (groupId, userId) => {
+    console.log(joinStatus);
+    joinStatus.value = false;
     for (let i = 0; i < groupList.value[groupId - 1].groupMember.length; i++) {
       if (groupList.value[groupId - 1].groupMember[i].id === userId) {
         joinStatus.value = true;
         return;
       }
     }
-    joinStatus.value = false;
   };
 
   return {

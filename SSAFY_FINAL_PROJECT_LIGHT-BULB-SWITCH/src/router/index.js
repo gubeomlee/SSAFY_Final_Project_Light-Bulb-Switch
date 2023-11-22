@@ -72,4 +72,19 @@ router.beforeEach((to, from, next) => {
   }
 });
 
+router.beforeEach((to, from, next) => {
+  const userStore = useUsersStore();
+
+  if (
+    from.name === "groupSearch" &&
+    to.name === "groupDetailView" &&
+    userStore.loginStatus === false
+  ) {
+    alert("로그인이 필요합니다.");
+    next({ name: "login" });
+  } else {
+    next();
+  }
+});
+
 export default router;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>여기는 모임검색 페이지입니다.</div>
+    <!-- <div>여기는 모임검색 페이지입니다.</div> -->
     <GroupSearchList
       v-for="group in store.groupList"
       :group="group"
