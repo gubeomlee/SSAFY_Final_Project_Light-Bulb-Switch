@@ -1,0 +1,193 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `mydb` ;
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
+-- -----------------------------------------------------
+-- Schema ssafydb
+-- -----------------------------------------------------
+USE `mydb` ;
+
+-- -----------------------------------------------------
+-- Table `mydb`.`User`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`User` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`User` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `userId` VARCHAR(45) NOT NULL,
+  `userPw` VARCHAR(45) NOT NULL,
+  `userName` VARCHAR(45) NOT NULL,
+  `userLocation` VARCHAR(45) NULL,
+  `userAge` INT NULL,
+  `userGender` VARCHAR(1) NULL,
+  `img` VARCHAR(200) NULL,
+  `orgImg` VARCHAR(200) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`LikeWorkout`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`LikeWorkout` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`LikeWorkout` (
+  `id` INT NOT NULL,
+  `workout` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`UserLikeWorkout`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`UserLikeWorkout` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`UserLikeWorkout` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `UserId` INT NOT NULL,
+  `LikeWorkoutId` INT NOT NULL,
+  `gradeTotal` INT NULL,
+  `gradeBeginner` INT NULL,
+  `gradeIntermediate` INT NULL,
+  `gradExpert` INT NULL,
+  `repTotal` INT NULL,
+  `repBad` INT NULL,
+  `repSoso` INT NULL,
+  `repGood` INT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_UserLikeWorkout_LikeWorkout1`
+    FOREIGN KEY (`LikeWorkoutId`)
+    REFERENCES `mydb`.`LikeWorkout` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_UserLikeWorkout_User1`
+    FOREIGN KEY (`UserId`)
+    REFERENCES `mydb`.`User` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = cp1250;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`MainBoard`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`MainBoard` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`MainBoard` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(45) NOT NULL,
+  `content` LONGTEXT NULL,
+  `location` VARCHAR(45) NOT NULL,
+  `workout` VARCHAR(45) NOT NULL,
+  `meetingDatetime` DATETIME NOT NULL,
+  `maxMember` INT NULL,
+  `UserId` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_MainBoard_User1`
+    FOREIGN KEY (`UserId`)
+    REFERENCES `mydb`.`User` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=1;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`GroupList`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`GroupList` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`GroupList` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `group` VARCHAR(45) NOT NULL,
+  `MainBoardId` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_GroupList_MainBoard1`
+    FOREIGN KEY (`MainBoardId`)
+    REFERENCES `mydb`.`MainBoard` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`UserGroupList`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`UserGroupList` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`UserGroupList` (
+  `id` INT NOT NULL  AUTO_INCREMENT,
+  `UserId` INT NOT NULL,
+  `GroupListId` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_UserGroupList_User1`
+    FOREIGN KEY (`UserId`)
+    REFERENCES `mydb`.`User` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_UserGroupList_GroupList1`
+    FOREIGN KEY (`GroupListId`)
+    REFERENCES `mydb`.`GroupList` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`MainBoardComment`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`MainBoardComment` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`MainBoardComment` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `content` LONGTEXT NULL,
+  `MainBoardId` INT NOT NULL,
+  `UserId` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_MainBoardComment_MainBoard1`
+    FOREIGN KEY (`MainBoardId`)
+    REFERENCES `mydb`.`MainBoard` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_MainBoardComment_User1`
+    FOREIGN KEY (`UserId`)
+    REFERENCES `mydb`.`User` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`photos`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`photos` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`photos` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `img` VARCHAR(200) NULL,
+  `orgImg` VARCHAR(200) NULL,
+  `MainBoardId` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_photos_MainBoard1`
+    FOREIGN KEY (`MainBoardId`)
+    REFERENCES `mydb`.`MainBoard` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

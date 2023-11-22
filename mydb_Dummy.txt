@@ -1,0 +1,72 @@
+-- user 테이블 데이터 생성 --
+INSERT INTO  `User` (userId, userPw, userName, userLocation, userAge, userGender, img, orgImg)
+VALUES
+('ssafy', 'ssafy', '김싸피', '서울', 26 , '여', 'kim_ssafy.jpg', 'kim_ssafy_org.img'),
+('1234', '1234', '이재용', '서울', 29 , '남', 'lee_jaeyong.jpg', 'lee_jaeyong_org.img'),
+('samsung', 'samnsung', '김삼성', '서울', 27 , '여', 'kim_samsung.jpg', 'kim_samsung_org.img'),
+('multi', 'multi', '김멀티', '서울', 28 , '남', 'kim_multi.jpg', 'kim_multi_org.img');
+
+SELECT * FROM mydb.User;
+
+-- like_workout 테이블 데이터 생성 -- 
+INSERT INTO `LikeWorkout` (id, workout)
+VALUES
+(1,'테니스'),
+(2, '수영');
+
+SELECT * FROM mydb.LikeWorkout;
+ 
+  -- user_like_workout 테이블 더미 데이터 생성
+INSERT INTO  `mydb`.`UserLikeWorkout`  (`UserId`, `LikeWorkoutId` , `gradeTotal`, `gradeBeginner`, `gradeIntermediate`, `gradExpert`, `repTotal`, `repBad`, `repSoso`, `repGood`)
+VALUES
+  (1, 1, 1, 1, 0, 0, 6, 0, 0, 1),
+  (2, 2, 0, 1, 0, 0, 4, 1, 0, 0),
+  (3, 1, 1, 1, 0, 0, 8, 0, 1, 3);
+  
+  SELECT * FROM mydb.UserLikeWorkout;
+  
+  
+  
+
+-- group_main_board 테이블 더미 데이터 생성
+INSERT INTO `MainBoard` (title, content, location, workout, meetingDatetime, Maxmember, UserId)
+VALUES
+  ('클라이밍할 싸피생 구해요!', '멀티캠퍼스 옆에 있는 클라이밍 gym에서 같이 해요 ', '서울 강남구 논현로86길 20 B1', '클라이밍',  '2023-11-19 10:00:00', 10, 1),
+  ('스파이더맨 되고 싶은 사람?', '멀티캠퍼스 옆에 있는 클라이밍 gym에서 같이 해요 ', '서울 강남구 논현로86길 20 B1', '클라이밍',  '2023-11-19 10:00:00', 10, 2),
+  ('풋살 고?', '매주 수요일 퇴근 후에 풋살할 사람!', '서울 강남구 논현로86길 34 B2', '풋살', '2023-11-20 15:30:00', 8, 3),
+  ('헬스 더이상 잘못된 자세 그만!', '혼자 운동하면서 잘못된 자세로 하느라 힘드셨죠? 같이 헬스 자세 디버깅하며 운동해요.', '역삼역 근처 헬스장', '헬스', '2023-11-21 18:00:00', 4, 4);
+
+
+SELECT * FROM mydb.MainBoard;
+  
+-- group_list 테이블 더미데이터 생성  
+INSERT INTO `GroupList` (`group`, `MainBoardId`)
+VALUES 
+('콜라이밍', 1),
+('스파이더맨',2),
+('코딩풋살',3),
+('디버깅헬스',4);
+
+SELECT * FROM mydb.GroupList;
+
+-- user_group_list 더미 대이터 생성  
+INSERT INTO `UserGroupList` (`UserId`, `GroupListId`)
+VALUES
+(1,1),
+(1,2),
+(3,3);
+
+SELECT * FROM mydb.UserGroupList;
+  
+
+-- group_main_board_comment 테이블 더미 데이터 생성
+INSERT INTO `MainBoardComment` (content, MainBoardId, UserId)
+VALUES
+  ('재밌어보여요', 1, 1),
+  ('콜!', 2, 2),
+  ('풋살은 수요일이지~',3,3),
+  ('시간은 미정인가요?',4,4);
+  
+  SELECT * FROM mydb.MainBoardComment;
+  
+
