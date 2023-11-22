@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.board.model.dao.LikeWorkoutsDao">
+
+	<!-- 유저가 좋아하는 운동 선택하기 -->
+	<insert id="insertSelectedMBWorkouts" parameterType="map">
+		INSERT INTO MainBoardWorkouts (MainBoardId, WorkoutsId)
+		VALUES
+		<foreach collection="workoutsIds" item="workoutId"
+			separator=",">
+			(#{mainBoardId}, #{workoutId})
+		</foreach>
+	</insert>
+
+
+
+
+
+</mapper>

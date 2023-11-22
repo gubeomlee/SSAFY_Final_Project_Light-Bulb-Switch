@@ -11,17 +11,12 @@ import lombok.ToString;
 @ToString
 public class MainBoard {
 	private int id;
-	private int UserId;
 	private String title;
 	private String content;
 	private String location;
-	private String workout;
-//	private String img;
-//	private String orgImg;
-//	private String meetingDatetime;
+//	private String workout;
+	private int UserId;
 	private int maxMember;
-	private int GroupsId;
-	
-	
+	private String groupName;
 
 }

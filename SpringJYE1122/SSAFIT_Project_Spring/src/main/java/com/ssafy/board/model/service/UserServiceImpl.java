@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<User> selecAll() {
 		List<User> tmp = userDao.selecAll();
-		System.out.println(tmp);
+//		System.out.println(tmp);
 		return tmp;
 	}
 
@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	@Override
 	public int updateUser(User user) {
-	System.out.println(user);
+//	System.out.println(user);
 		return userDao.updateUser(user);
 	}
 

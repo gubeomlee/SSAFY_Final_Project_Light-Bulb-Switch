@@ -10,27 +10,20 @@ public interface MainBoardDao {
 	//모든 게시글 가져오기
 	List<MainBoard> getAllMainBoards();
 	
-	
-	MainBoard getMainBoardById(int id);
+	//특정 게시글 groupName으로 가져오기 
+	MainBoard getMainBoardBygroupName(String groupName);
 	
 	//게시글 쓰기
 	void insertMainBoard(MainBoard mainBoard);
 	
 	//게시글 수정하기
-	void updateMainBoard(MainBoard mainBoard);
+	int updateMainBoard(MainBoard mainBoard);
 	
 	//게시글 삭제하기
-	void deleteMainBoard(MainBoard mainBoard);
+	int deleteMainBoard(int id);
 
-	//photos
-	List<MainBoard> getAllPhotos();
-	MainBoard getPhotosById(int id);
-    void insertPhotos(MainBoard photos);
-    void deletePhotos(int id);
+
+
 	
-	//meeting schedule
-	List<MainBoard> getAllMeetingSchedules();
-	MainBoard getMeetingScheduleById(int id);
-	void insertMeetingSchedule(MainBoard meetingSchedule);
-	void deleteMeetingSchedule(int id);
+	
 }
