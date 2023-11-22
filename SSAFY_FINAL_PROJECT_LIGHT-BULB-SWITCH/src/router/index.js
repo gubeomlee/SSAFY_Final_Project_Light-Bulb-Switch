@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { useUsersStore } from "@/stores/users";
+import { useGroupStore } from "../stores/group";
 import GroupCreateView from "@/views/GroupCreateView.vue";
 import GroupSearchView from "@/views/GroupSearchView.vue";
 import GroupDetailView from "@/views/GroupDetailView.vue";
@@ -56,6 +57,16 @@ router.beforeEach((to, from, next) => {
   if (to.name === "groupCreate" && !usersStore.loginStatus) {
     alert("로그인이 필요합니다.");
     next({ name: "login" });
+  } else {
+    next();
+  }
+});
+
+router.beforeEach((to, from, next) => {
+  const groupStore = useGroupStore();
+
+  if (from.name === "groupCreate" && !groupStore.isValidCreat) {
+    alert("유효하지 않은 그룹 생성입니다.");
   } else {
     next();
   }

@@ -1,15 +1,13 @@
 <template>
   <div>
-    {{ title }}
+    <GroupSearchDetail :group="store.groupDetail"></GroupSearchDetail>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
-import { useRoute } from "vue-router";
-const route = useRoute();
-
-const title = ref(route.params.title);
+import GroupSearchDetail from "../components/Group/GroupSearchDetail.vue";
+import { useGroupStore } from "../stores/group";
+const store = useGroupStore();
 </script>
 
 <style scoped></style>

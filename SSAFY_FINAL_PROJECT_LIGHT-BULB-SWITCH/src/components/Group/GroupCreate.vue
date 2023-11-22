@@ -34,6 +34,17 @@
             </select>
           </div>
           <div class="mb-3">
+            <label for="groupLocationDetail" class="col-form-label"
+              >모임 상세 장소</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="groupLocationDetail"
+              v-model="groupLocationDetail"
+            />
+          </div>
+          <div class="mb-3">
             <label for="groupCapacity" class="col-form-label"
               >정원({{ groupCapacityMin }}명 ~ {{ groupCapacityMax }}명)</label
             >
@@ -102,8 +113,9 @@ const userStore = useUsersStore();
 
 const representative = ref(userStore.loginUser.username);
 const representativeId = ref(userStore.loginUser.id);
-const groupTitle = ref("");
+const groupTitle = ref(null);
 const groupLocation = ref("");
+const groupLocationDetail = ref("");
 const groupCapacity = ref(30);
 const groupCapacityMin = ref(5);
 const groupCapacityMax = ref(50);
@@ -131,16 +143,29 @@ const createGroup = () => {
     groupCapacity.value = groupCapacityMax.value;
   }
 
-  store.createGroup(
-    representative,
-    representativeId,
-    groupTitle,
-    groupLocation,
-    groupCapacity,
-    groupContent,
-    workoutListCreateGroup,
-    groupMember
-  );
+  if (
+    groupTitle.value === null ||
+    groupLocation.value.length === 0 ||
+    workoutListCreateGroup.value.length === 0
+  ) {
+    store.inValidCreate();
+  } else {
+    store.validCreate();
+
+    store.createGroup(
+      representative,
+      representativeId,
+      groupTitle,
+      groupLocation,
+      groupLocationDetail,
+      groupCapacity,
+      groupContent,
+      workoutListCreateGroup,
+      groupMember
+    );
+  }
+
+  console.log(store.isValidCreat);
 };
 </script>
 
