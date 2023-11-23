@@ -120,7 +120,9 @@ const groupCapacityMin = ref(5);
 const groupCapacityMax = ref(50);
 const groupContent = ref("");
 const workoutList = ref([]);
-const groupMember = ref([{ username: userStore.username, id: userStore.id }]);
+const groupMember = ref([
+  { username: userStore.loginUser.username, id: userStore.loginUser.id },
+]);
 
 for (let i = 0; i < store.workout.length; i++) {
   workoutList.value.push([store.workout[i], false]);
