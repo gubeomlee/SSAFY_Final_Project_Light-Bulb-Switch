@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div>유투브 영상 검색</div>
     <div>
       <header class="py-3 mb-4 border-bottom">
         <div class="container d-flex flex-wrap justify-content-center">
@@ -22,7 +21,7 @@
               v-model="keyword"
               @keyup.enter="search"
             />
-            <button @click="search">검색</button>
+            <!-- <button @click="search">검색</button> -->
           </div>
         </div>
       </header>
@@ -33,12 +32,21 @@
 <script setup>
 import { ref } from "vue";
 import { useYoutubeStore } from "../../stores/youtube";
-const keyword = ref("");
-
+import { RouterView, RouterLink, useRouter } from "vue-router";
 const store = useYoutubeStore();
+const router = useRouter();
+
+const keyword = ref(null);
 
 const search = function () {
+  if (keyword.value === null) {
+    keyword.value = "운동";
+  }
   store.youtubeSearchSelect(keyword.value);
+  router.push({
+    name: "youtubeVideoSearchListView",
+    params: { keyword: keyword.value },
+  });
 };
 </script>
 

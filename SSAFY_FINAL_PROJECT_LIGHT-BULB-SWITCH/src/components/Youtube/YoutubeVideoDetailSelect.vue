@@ -1,7 +1,25 @@
 <template>
-  <div>유투브 선택 영상</div>
+  <div>
+    <iframe
+      width="560"
+      height="315"
+      :src="videoURL"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
+  </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { computed } from "vue";
+const props = defineProps({
+  videoId: Object,
+});
+const videoURL = computed(() => {
+  return `https://www.youtube.com/embed/${props.videoId}`;
+});
+</script>
 
 <style scoped></style>

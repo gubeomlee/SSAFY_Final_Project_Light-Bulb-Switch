@@ -8,6 +8,7 @@ import HomeView from "@/views/HomeView.vue";
 import LoginView from "@/views/LoginView.vue";
 import SignupView from "@/views/SignupView.vue";
 import MypageView from "@/views/MypageView.vue";
+import YoutubeVideoSearchListView from "@/views/YoutubeVideoSearchListView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -46,6 +47,11 @@ const router = createRouter({
       path: "/mypage",
       name: "mypage",
       component: MypageView,
+    },
+    {
+      path: "/youtubeVideoSearchListView/:keyword",
+      name: "youtubeVideoSearchListView",
+      component: YoutubeVideoSearchListView,
     },
   ],
 });

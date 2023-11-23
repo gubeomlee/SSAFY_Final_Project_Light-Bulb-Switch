@@ -8,7 +8,7 @@ export const useYoutubeStore = defineStore("youtube", () => {
   const videoSelect = ref(null);
 
   const youtubeSearchRandom = computed(async () => {
-    const randomIndex = Math.floor(Math.random() * 10);
+    const randomIndex = Math.floor(Math.random() * 20);
     console.log(randomIndex);
     const URL = "https://www.googleapis.com/youtube/v3/search";
     const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
@@ -21,12 +21,35 @@ export const useYoutubeStore = defineStore("youtube", () => {
           part: "snippet",
           q: "운동",
           type: "video",
-          maxResults: 10,
+          maxResults: 20,
         },
       });
-      videoRandom.value = response.data.items[randomIndex].snippet;
+      videoRandom.value = response.data.items[randomIndex];
     } catch {}
   });
+
+  const youtubeSearchRandomNotComputed = () => {
+    const randomIndex = Math.floor(Math.random() * 20);
+    console.log(randomIndex);
+    const URL = "https://www.googleapis.com/youtube/v3/search";
+    const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
+    axios({
+      url: URL,
+      method: "GET",
+      params: {
+        key: API_KEY,
+        part: "snippet",
+        q: "운동",
+        type: "video",
+        maxResults: 20,
+      },
+    })
+      .then((response) => {
+        videoRandom.value = response.data.items[randomIndex];
+        console.log(videoRandom.value);
+      })
+      .catch(() => {});
+  };
 
   const youtubeSearchSelect = (keyword) => {
     const URL = "https://www.googleapis.com/youtube/v3/search";
@@ -39,7 +62,7 @@ export const useYoutubeStore = defineStore("youtube", () => {
         part: "snippet",
         q: keyword,
         type: "video",
-        maxResults: 5,
+        maxResults: 10,
       },
     })
       .then((response) => {
@@ -55,9 +78,11 @@ export const useYoutubeStore = defineStore("youtube", () => {
     videoSelect.value = video;
     console.log(videoSelect);
   };
+
   return {
     videos,
     youtubeSearchRandom,
+    youtubeSearchRandomNotComputed,
     youtubeSearchSelect,
     clickVideo,
     videoSelect,
