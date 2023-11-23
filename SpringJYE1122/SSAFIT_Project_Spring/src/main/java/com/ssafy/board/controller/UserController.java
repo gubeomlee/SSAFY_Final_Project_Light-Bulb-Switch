@@ -42,8 +42,8 @@ public class UserController {
 
 	@PostMapping("/login")
 	public ResponseEntity<?> login(@RequestBody String userId, @RequestBody String password) {
-		User loginUser = userService.login(userId, password);
-		if (loginUser != null) {
+		User loginUser = userService.searchById(userId);
+		if (loginUser != null && loginUser.getPassword() == password) {
 			return new ResponseEntity<User>(loginUser, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);

@@ -12,5 +12,5 @@ public interface UserDao {
 	void singup(User user);
 
 	// 로그인
-	User login(String userId, String password);
+	User searchById(String userId);
 }

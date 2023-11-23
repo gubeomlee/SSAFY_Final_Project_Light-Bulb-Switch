@@ -30,8 +30,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional
-	public User login(String userId, String password) {
-		User user = userDao.login(userId, password);
+	public User searchById(String userId) {
+		User user = userDao.searchById(userId);
 		return user;
 	}
 }
