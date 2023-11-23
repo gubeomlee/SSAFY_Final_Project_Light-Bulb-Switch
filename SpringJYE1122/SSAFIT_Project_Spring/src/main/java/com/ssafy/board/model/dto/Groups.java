@@ -8,6 +8,6 @@ import lombok.*;
 @ToString
 public class Groups {
 	private int id;
-	private int MainBoardId;
+	private String groupName;
 
 }

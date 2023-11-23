@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.board.model.dao.UserGroupsDao">
+
+
+
+	<!-- 유저의 찜운동 list 가져오기 -->
+	<select id="getAllGroupLists" resultType="UserGroups">
+		select *
+		from
+		UserGroups;
+	</select>
+
+	<select id="getGroupListById" resultType="UserGroups">
+		select *
+		from
+		UserGroups
+		Where id=#{id};
+	</select>
+
+	<insert id="insertGroupToUser" parameterType="UserGroups">
+		Insert INTO UserGroups
+		(UserId, GroupsId)
+		Values
+		<foreach collection="workoutsIds" item="workoutId"
+			separator=",">
+			(#{UserId}, #{GroupsId})
+		</foreach>
+	</insert>
+
+	<delete id="deleteGroupFromUser" parameterType="int">
+		DELETE FROM UserGroups
+		Where id=#{id}
+	</delete>
+
+
+</mapper>

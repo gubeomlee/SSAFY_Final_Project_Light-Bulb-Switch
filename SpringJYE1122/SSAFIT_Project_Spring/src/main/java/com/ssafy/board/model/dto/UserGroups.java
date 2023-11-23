@@ -11,7 +11,7 @@ import lombok.ToString;
 @ToString
 public class UserGroups {
 	private int id;
-	private int userId;
-	private int groupId;
+	private int UserId;
+	private int GroupId;
 	
 }
