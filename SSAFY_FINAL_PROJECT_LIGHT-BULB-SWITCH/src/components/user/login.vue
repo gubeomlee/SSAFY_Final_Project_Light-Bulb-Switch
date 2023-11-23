@@ -46,6 +46,7 @@
             >취소</RouterLink
           >
         </form>
+        {{ apiStore.userInfoList }}
       </div>
     </div>
   </div>
@@ -53,8 +54,10 @@
 
 <script setup>
 import { RouterView, RouterLink, useRouter } from "vue-router";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useUsersStore } from "@/stores/users";
+import { useUsersApiStore } from "../../stores/usersApi";
+const apiStore = useUsersApiStore();
 
 const store = useUsersStore();
 const userId = ref("");
@@ -69,6 +72,11 @@ const login = () => {
     alert("아이디 또는 비밀번호가 일치하지 않습니다.");
   }
 };
+
+onMounted(() => {
+  apiStore.getBoardList();
+  console.log(apiStore.userInfoList);
+});
 </script>
 
 <style scoped>

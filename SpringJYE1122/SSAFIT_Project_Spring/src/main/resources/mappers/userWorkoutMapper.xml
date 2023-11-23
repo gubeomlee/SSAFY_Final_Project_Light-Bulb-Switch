@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.board.model.dao.UserDao">
+
+
+	<select id="selecAll" resultType="User">
+		select *
+		from User;
+	</select>
+
+
+	<insert id="singupUser" parameterType="User">
+		INSERT INTO User
+		(userId, userPw, userName, userLocation, userAge, userGender, img, orgImg)
+		VALUES (#{userId}, #{userPw}, #{userName}, #{userLocation}, #{userAge}, #{userGender}, #{img}, #{orgImg})
+	</insert>
+
+	<select id="loginId" parameterType="String" resultType="User">
+		SELECT *
+		FROM User
+		WHERE userId= #{userId}
+	</select>
+
+	<!-- 회원정보 수정 -->
+	<update id="updateUser" parameterType="User">
+		UPDATE User
+		SET
+		 userPw = #{userPw},
+		userName = #{userName},
+		userLocation = #{userLocation},
+		userAge = #{userAge},
+		userGender = #{userGender},
+		img = #{img},
+		orgImg = #{orgImg}
+		WHERE id = #{id}
+	</update>
+
+	<delete id="deleteUser" parameterType="int">
+		DELETE FROM User
+		WHERE id =	#{id}
+	</delete>
+
+
+</mapper>

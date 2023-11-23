@@ -15,39 +15,23 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDao userDao;
 
-	@Transactional
 	@Override
-	public List<User> selecAll() {
-		List<User> tmp = userDao.selecAll();
-//		System.out.println(tmp);
-		return tmp;
+	@Transactional
+	public List<User> sellectAllUsers() {
+		List<User> userInfoList = userDao.sellectAllUsers();
+		return userInfoList;
 	}
 
-	@Transactional
 	@Override
-	public void singupUser(User user) {
-		System.out.println(user);
-
-		userDao.singupUser(user);
+	@Transactional
+	public void singup(User user) {
+		userDao.singup(user);
 	}
 
-	@Transactional
 	@Override
-	public User loginId(User user) {
-		String userId = user.getUserId();
-		return userDao.loginId(userId);
-	}
-
 	@Transactional
-	@Override
-	public int updateUser(User user) {
-//	System.out.println(user);
-		return userDao.updateUser(user);
-	}
-
-	@Transactional
-	@Override
-	public int deleteUser(int id) {
-		return userDao.deleteUser(id);
+	public User login(String userId, String password) {
+		User user = userDao.login(userId, password);
+		return user;
 	}
 }
