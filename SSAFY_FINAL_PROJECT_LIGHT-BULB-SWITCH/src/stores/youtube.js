@@ -7,28 +7,26 @@ export const useYoutubeStore = defineStore("youtube", () => {
   const videoRandom = ref(null);
   const videoSelect = ref(null);
 
-  const youtubeSearchRandom = () => {
+  const youtubeSearchRandom = computed(async () => {
     const randomIndex = Math.floor(Math.random() * 10);
     console.log(randomIndex);
     const URL = "https://www.googleapis.com/youtube/v3/search";
     const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
-    return axios({
-      url: URL,
-      method: "GET",
-      params: {
-        key: API_KEY,
-        part: "snippet",
-        q: "운동",
-        type: "video",
-        maxResults: 10,
-      },
-    })
-      .then((response) => {
-        videoRandom.value = response.data.items[randomIndex].snippet;
-        // console.log(videoRandom.value);
-      })
-      .catch(() => {});
-  };
+    try {
+      const response = await axios({
+        url: URL,
+        method: "GET",
+        params: {
+          key: API_KEY,
+          part: "snippet",
+          q: "운동",
+          type: "video",
+          maxResults: 10,
+        },
+      });
+      videoRandom.value = response.data.items[randomIndex].snippet;
+    } catch {}
+  });
 
   const youtubeSearchSelect = (keyword) => {
     const URL = "https://www.googleapis.com/youtube/v3/search";
