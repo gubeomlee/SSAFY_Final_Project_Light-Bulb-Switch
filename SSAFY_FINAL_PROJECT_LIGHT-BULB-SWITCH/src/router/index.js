@@ -9,6 +9,7 @@ import LoginView from "@/views/LoginView.vue";
 import SignupView from "@/views/SignupView.vue";
 import MypageView from "@/views/MypageView.vue";
 import YoutubeVideoSearchListView from "@/views/YoutubeVideoSearchListView.vue";
+import YoutubeVideoSearchListDetailView from "@/views/YoutubeVideoSearchListDetailView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -52,6 +53,11 @@ const router = createRouter({
       path: "/youtubeVideoSearchListView/:keyword",
       name: "youtubeVideoSearchListView",
       component: YoutubeVideoSearchListView,
+    },
+    {
+      path: "/youtubeVideoSearchListDetailView/:title/:videoId",
+      name: "youtubeVideoSearchListDetailView",
+      component: YoutubeVideoSearchListDetailView,
     },
   ],
 });

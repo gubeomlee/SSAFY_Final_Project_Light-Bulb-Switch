@@ -8,22 +8,22 @@
       {{ workoutList }}
     </div> -->
     <div class="container d-flex flex-row" style="width: 80%; min-height: auto">
-      <div
-        class="shadow rounded m-2 p-2"
-        style="background-color: antiquewhite; width: 40%"
-      >
+      <div class="shadow rounded m-2 p-2 bg-light" style="width: 40%">
         <div class="d-flex flex-row">
           <div class="m-1 p-1" style="background-color: white">
-            <i class="bi bi-person-bounding-box" style="font-size: 5rem"></i>
+            <i
+              class="rounded bi bi-person-bounding-box"
+              style="font-size: 5rem"
+            ></i>
           </div>
           <div class="d-flex flex-column">
-            <div class="m-1 p-1" style="background-color: beige">
+            <div class="shadow rounded m-1 p-1 bg-body-secondary">
               {{ store.loginUser.username }}
             </div>
-            <div class="m-1 p-1" style="background-color: azure">
+            <div class="shadow rounded m-1 p-1 bg-body-secondary">
               {{ store.loginUser.age }}세
             </div>
-            <div class="m-1 p-1" style="background-color: azure">
+            <div class="shadow rounded m-1 p-1 bg-body-secondary">
               {{ store.loginUser.location }}
             </div>
           </div>
@@ -49,10 +49,7 @@
           </div>
         </div>
       </div>
-      <div
-        class="shadow rounded m-2 p-2"
-        style="background-color: aqua; width: 60%"
-      >
+      <div class="shadow rounded m-2 p-2 bg-light" style="width: 60%">
         <div>모임일정 달력</div>
       </div>
     </div>
