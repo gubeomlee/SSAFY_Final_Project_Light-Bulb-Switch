@@ -101,12 +101,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`MainBoard` (
   `content` LONGTEXT NULL,
   `location` VARCHAR(45) NOT NULL,
   `workout` VARCHAR(45) NOT NULL,
-  `userId` INT NOT NULL,
+  `UserId` INT NOT NULL,
   `maxMember` INT NULL,
   `GroupsId` INT NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_group_main_board_user1`
-    FOREIGN KEY (`userId`)
+    FOREIGN KEY (`UserId`)
     REFERENCES `mydb`.`User` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,

@@ -10,6 +10,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class Photos {
+	private int id;
 	private String img;
 	private String orgImg;
+	private int MainBoardId;
 }

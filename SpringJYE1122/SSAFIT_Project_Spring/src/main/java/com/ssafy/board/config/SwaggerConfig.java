@@ -54,7 +54,7 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("SSAFY 소모임 Light Bulb Switch REST API")
+                .title("SSAFY 소모임 Light Bulbs Switch REST API")
                 .description("SSAFIT_Project_Spring")
                 .version("0.1")
                 .build();
